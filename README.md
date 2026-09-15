@@ -31,10 +31,10 @@ and written to CSV, with placeholder expansion for questions that vary by
 country or nationality. The models are pretrained and queried at inference time;
 no model weights are modified.
 
-- `upload_docs.py` — chunks and embeds a scholar's texts into a FAISS vector store
-- `ask.py` — retrieves passages and queries the model for each survey item
-- `run_all.py` — runs the full question set across scholars and saves responses
-- helper scripts (`create_store.py`, `check_empty.py`) where needed
+- `upload_docs.py`: chunks and embeds a scholar's texts into a FAISS vector store
+- `ask.py`: retrieves passages and queries the model for each survey item
+- `run_all.py`: runs the full question set across scholars and saves responses
+- helper scripts: (`create_store.py`, `check_empty.py`) where needed
 
 Retrieval uses semantic search over document embeddings (`all-MiniLM-L6-v2`)
 with a fixed eight-chunk context for locally served models; the OpenAI pipeline
@@ -44,7 +44,7 @@ uses its hosted vector store.
 
 Per-text preprocessing scripts that convert raw scholar source material into
 clean plain text for retrieval. These handle the specific artifacts of each
-document: OCR noise, running headers and footers, page numbers, footnote blocks,
+document- OCR noise, running headers and footers, page numbers, footnote blocks,
 drop-cap artifacts, hyphenated line breaks, and non-English (Devanagari, CJK)
 segments mixed into the English text.
 
