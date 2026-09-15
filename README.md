@@ -14,14 +14,14 @@ architecture and pretraining as the source of any behavioral difference.
 ## What's in this repository
 
 This repository contains the data-collection pipelines and the text-cleaning
-code for the study. It covers the retrieval-augmented generation system used to
+code for the study. It covers the retrieval-augmented generation (RAG) system used to
 query each model and the preprocessing scripts that prepare the source texts
 for retrieval. The scholar source texts themselves are not included in the
 repository.
 
 ### Data-collection pipelines
 
-Each model has its own retrieval-augmented generation (RAG) pipeline, covering both
+Each model has its own retrieval-augmented generation pipeline, covering both
 commercial API-based systems and open-weight models served locally. For a given
 scholar, the pipeline loads a prebuilt FAISS index of that scholar's embedded
 writings, and for each survey question it embeds the query, retrieves the most
