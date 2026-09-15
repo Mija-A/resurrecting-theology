@@ -21,7 +21,7 @@ repository.
 
 ### Data-collection pipelines
 
-Each model has its own retrieval-augmented generation pipeline, covering both
+Each model has its own retrieval-augmented generation (RAG) pipeline, covering both
 commercial API-based systems and open-weight models served locally. For a given
 scholar, the pipeline loads a prebuilt FAISS index of that scholar's embedded
 writings, and for each survey question it embeds the query, retrieves the most
