@@ -11,7 +11,7 @@ START_PAGE = 8
 END_PAGE = 322
 
 
-# ── OCR ───────────────────────────────────────────────────────────────────────
+# OCR
 
 def ocr_page(pdf_path, page_num):
     """Render one PDF page using pdf2image and OCR it with pytesseract."""
@@ -19,7 +19,7 @@ def ocr_page(pdf_path, page_num):
     return pytesseract.image_to_string(imgs[0])
 
 
-# ── TEXT NORMALIZATION ────────────────────────────────────────────────────────
+# TEXT NORMALIZATION
 
 def strip_diacritics(text):
     normalized = unicodedata.normalize("NFD", text)
@@ -31,7 +31,7 @@ def fix_ocr(text):
     return text
 
 
-# ── LINE CLASSIFIERS ──────────────────────────────────────────────────────────
+# LINE CLASSIFIERS
 
 def is_devanagari(s):
     return bool(re.search(r'[\u0900-\u097F]', s))
@@ -98,7 +98,7 @@ def is_numbered_paragraph(s):
     return bool(re.match(r'^\d+[\.\s]\s*[A-Za-z]', s))
 
 
-# ── PAGE CLEANING ─────────────────────────────────────────────────────────────
+# PAGE CLEANING
 
 def clean_page(ocr_text):
     """Extract only English content from one OCR'd page.
@@ -170,7 +170,7 @@ def clean_page(ocr_text):
     return "\n".join(cleaned).strip()
 
 
-# ── MAIN ──────────────────────────────────────────────────────────────────────
+# MAIN
 
 def main():
     print(f"Processing pages {START_PAGE}-{END_PAGE}...")

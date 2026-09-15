@@ -10,7 +10,7 @@ PAGE_OFFSET = 15
 def is_page_number(s):
     return bool(re.fullmatch(r'\d+', s.strip()))
 
-# ── Step 1: Extract pages starting from PAGE_OFFSET ───────────────────────
+# Extract pages starting from PAGE_OFFSET
 doc = fitz.open(pdf_path)
 raw_pages = []
 for i, page in enumerate(doc):
@@ -21,7 +21,7 @@ for i, page in enumerate(doc):
 print(f"Total pages in PDF: {len(doc)}")
 print(f"Pages extracted (from page {PAGE_OFFSET}): {len(raw_pages)}")
 
-# ── Step 2: Detect repeating headers/footers ──────────────────────────────
+# Detect repeating headers/footers
 # First pass: collect all block texts to find repeats
 all_block_texts = []
 for page_blocks in raw_pages:
@@ -45,7 +45,7 @@ print(f"Repeating header/footer blocks detected: {len(repeating_lines)}")
 for line in sorted(repeating_lines):
     print(f"  '{line}'")
 
-# ── Step 3: Collect blocks as paragraphs ──────────────────────────────────
+# Collect blocks as paragraphs
 seen_repeated = set()
 paragraphs = []
 

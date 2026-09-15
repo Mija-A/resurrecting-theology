@@ -10,7 +10,7 @@ PAGE_OFFSET = 23
 def is_page_number(s):
     return bool(re.fullmatch(r'\d+', s.strip()))
 
-# ── Step 1: Extract pages starting from PAGE_OFFSET ───────────────────────
+# Extract pages starting from PAGE_OFFSET
 doc = fitz.open(pdf_path)
 raw_pages = []
 for i, page in enumerate(doc):
@@ -21,7 +21,7 @@ for i, page in enumerate(doc):
 print(f"Total pages in PDF: {len(doc)}")
 print(f"Pages extracted (from page {PAGE_OFFSET}): {len(raw_pages)}")
 
-# ── Step 2: Detect repeating headers/footers ──────────────────────────────
+# Detect repeating headers/footers
 line_counts = Counter()
 for page_text in raw_pages:
     for line in page_text.split("\n"):
@@ -42,7 +42,7 @@ print(f"Repeating lines detected: {len(repeating_lines)}")
 for line in sorted(repeating_lines):
     print(f"  '{line}'")
 
-# ── Step 3: Collect all lines, merging hyphenated breaks ──────────────────
+# Collect all lines, merging hyphenated breaks
 seen_repeated = set()
 all_lines = []
 
@@ -60,7 +60,7 @@ for page_text in raw_pages:
                 seen_repeated.add(s)
         all_lines.append(s)
 
-# ── Step 4: Merge hyphenated word splits ──────────────────────────────────
+# Merge hyphenated word splits
 merged_lines = []
 i = 0
 while i < len(all_lines):
@@ -72,7 +72,7 @@ while i < len(all_lines):
         merged_lines.append(line)
         i += 1
 
-# ── Step 5: Join all lines into continuous prose ──────────────────────────
+# Join all lines into continuous prose
 full_text = " ".join(merged_lines)
 
 with open(output_path, "w", encoding="utf-8") as f:

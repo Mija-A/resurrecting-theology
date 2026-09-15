@@ -61,7 +61,7 @@ def clean_block(text):
             cleaned.append(s_clean)
     return "\n".join(cleaned).strip()
 
-# ── Step 1: Extract pages starting from PAGE_OFFSET ───────────────────────
+# Extract pages starting from PAGE_OFFSET
 doc = fitz.open(pdf_path)
 raw_pages = []
 for i, page in enumerate(doc):
@@ -69,7 +69,7 @@ for i, page in enumerate(doc):
         continue
     raw_pages.append(page.get_text("text").strip())
 
-# ── Step 2: Count repeating lines across all pages ────────────────────────
+# Count repeating lines across all pages
 line_counts = Counter()
 for page_text in raw_pages:
     for line in page_text.split("\n"):
@@ -80,7 +80,7 @@ for page_text in raw_pages:
 REPEAT_THRESHOLD = 3
 repeating_lines = {line for line, count in line_counts.items() if count >= REPEAT_THRESHOLD}
 
-# ── Step 3: Clean each page, keeping first occurrence of repeated lines ────
+# Clean each page, keeping first occurrence of repeated lines
 seen_repeated = set()
 
 output_blocks = []

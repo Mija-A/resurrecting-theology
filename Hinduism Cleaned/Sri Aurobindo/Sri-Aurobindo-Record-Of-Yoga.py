@@ -24,7 +24,7 @@ def is_garbled_transliteration(s):
     garbled = sum(1 for w in words if w.isalpha() and len(w) > 1 and any(c.isupper() for c in w[1:]))
     return garbled / len(words) > 0.5
 
-# ── Step 1: Extract pages starting from PAGE_OFFSET ───────────────────────
+# Extract pages starting from PAGE_OFFSET
 doc = fitz.open(pdf_path)
 raw_pages = []
 for i, page in enumerate(doc):
@@ -35,7 +35,7 @@ for i, page in enumerate(doc):
 print(f"Total pages in PDF: {len(doc)}")
 print(f"Pages extracted (from page {PAGE_OFFSET}): {len(raw_pages)}")
 
-# ── Step 2: Detect repeating headers/footers ──────────────────────────────
+# Detect repeating headers/footers
 line_counts = Counter()
 for page_text in raw_pages:
     for line in page_text.split("\n"):
@@ -56,7 +56,7 @@ print(f"Repeating lines detected: {len(repeating_lines)}")
 for line in sorted(repeating_lines):
     print(f"  '{line}'")
 
-# ── Step 3: Collect and clean all lines, preserving structure ─────────────
+# Collect and clean all lines, preserving structure
 seen_repeated = set()
 output_lines = []
 
@@ -79,7 +79,7 @@ for page_text in raw_pages:
                 seen_repeated.add(s)
         output_lines.append(s)
 
-# ── Step 4: Collapse excessive consecutive blank lines ────────────────────
+# Collapse excessive consecutive blank lines
 cleaned = []
 prev_blank = False
 for line in output_lines:

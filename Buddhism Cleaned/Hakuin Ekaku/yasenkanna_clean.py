@@ -34,7 +34,7 @@ WADDELL_X_MAX  = 296.0
 LEGGETT_X_MIN  = 296.0
 LEGGETT_X_MAX  = 535.0
 
-# ── extraction ────────────────────────────────────────────────────────────────
+# extraction
 
 def extract_column(pdf_path, start_page, end_page, x_min, x_max):
     """
@@ -85,7 +85,7 @@ def extract_column(pdf_path, start_page, end_page, x_min, x_max):
     return all_paragraphs
 
 
-# ── cleaning ──────────────────────────────────────────────────────────────────
+# cleaning
 
 FOOTER = re.compile(
     r"(Master Hakuin.s Yasen Kanna\s*[–\-]\s*2 translations compiled|Lecut in 2011 Page)",
@@ -125,7 +125,7 @@ def clean(paragraphs):
     return out
 
 
-# ── main ─────────────────────────────────────────────────────────────────────
+# main
 
 def main():
     print(f"Reading {PDF_PATH} ...")

@@ -7,7 +7,7 @@ import io
 pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'
 
 
-# ── HELPERS ──────────────────────────────────────────────────────────────────
+# HELPERS
 
 def has_devanagari(s):
     return bool(re.search(r'[\u0900-\u097F]', s))
@@ -87,7 +87,7 @@ def is_footnote(s):
     return False
 
 
-# ── PAGE PROCESSING ───────────────────────────────────────────────────────────
+# PAGE PROCESSING
 
 def process_page(page_text, global_verse_seen, carry_in_english):
     """
@@ -169,7 +169,7 @@ def collapse_paragraphs(text):
     return '\n\n'.join(paragraphs)
 
 
-# ── MAIN ─────────────────────────────────────────────────────────────────────
+# MAIN
 
 def extract_translation(
     pdf_path,
@@ -219,7 +219,7 @@ def extract_translation(
     print(f"\nDone! {len(output_blocks)} pages written to:\n  {output_path}")
 
 
-# ── RUN ───────────────────────────────────────────────────────────────────────
+# RUN
 
 extract_translation(
     pdf_path="/Users/mijasmacbookpro/Desktop/Prof Cantay Research/Adi Shankara Cleaning/Vakvavritti.pdf",

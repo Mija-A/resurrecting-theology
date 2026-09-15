@@ -35,13 +35,13 @@ def clean_block(text):
         cleaned.append(line.rstrip())
     return "\n".join(cleaned).strip()
 
-# ── Step 1: Extract text from PDF ─────────────────────────────────────────
+# Extract text from PDF
 doc = fitz.open(pdf_path)
 raw_pages = []
 for page in doc:
     raw_pages.append(page.get_text("text").strip())
 
-# ── Step 2: Clean each page ────────────────────────────────────────────────
+# Clean each page
 output_blocks = []
 for page_text in raw_pages:
     cleaned = clean_block(page_text)

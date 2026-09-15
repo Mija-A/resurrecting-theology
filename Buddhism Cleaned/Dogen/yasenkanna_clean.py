@@ -40,7 +40,7 @@ LEFT_COL_X1  = 296.0   # right edge of Waddell column
 # Words starting beyond this x belong to Leggett or I Ching columns
 COL_RIGHT_THRESHOLD = 296.0
 
-# ── helpers ──────────────────────────────────────────────────────────────────
+# helpers
 
 def words_in_left_col(page):
     """Return all words whose left edge is within the Waddell column."""
@@ -113,7 +113,7 @@ def lines_to_paragraphs(lines, line_gap_threshold=6):
     return paragraphs
 
 
-# ── main extraction ───────────────────────────────────────────────────────────
+# main extraction
 
 def extract_waddell(pdf_path, start_page, end_page):
     """Extract and return Waddell's left-column text as a list of paragraphs."""
@@ -133,7 +133,7 @@ def extract_waddell(pdf_path, start_page, end_page):
     return all_paragraphs
 
 
-# ── cleaning ──────────────────────────────────────────────────────────────────
+# cleaning
 
 # Footer pattern present on every page
 FOOTER_PATTERN = re.compile(
@@ -225,7 +225,7 @@ def clean_all(paragraphs):
     return cleaned
 
 
-# ── merge consecutive short lines that belong together ────────────────────────
+# merge consecutive short lines that belong together
 
 def merge_fragments(paragraphs):
     """
@@ -253,7 +253,7 @@ def merge_fragments(paragraphs):
     return result
 
 
-# ── main ─────────────────────────────────────────────────────────────────────
+# main
 
 def main():
     print(f"Extracting left column from {PDF_PATH} (pages {START_PAGE}–{END_PAGE})...")
