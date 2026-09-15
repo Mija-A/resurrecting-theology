@@ -44,7 +44,7 @@ uses its hosted vector store.
 
 Per-text preprocessing scripts that convert raw scholar source material into
 clean plain text for retrieval. These handle the specific artifacts of each
-document- OCR noise, running headers and footers, page numbers, footnote blocks,
+document, such as OCR noise, running headers and footers, page numbers, footnote blocks,
 drop-cap artifacts, hyphenated line breaks, and non-English (Devanagari, CJK)
 segments mixed into the English text.
 
